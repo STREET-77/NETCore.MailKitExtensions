@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETCore.MailKitExtensions", "src\NETCore.MailKitExtensions\NETCore.MailKitExtensions.csproj", "{7895A69E-98FA-44E5-AC33-497519CC619F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NETCore.MailKitExtensions.Tests", "test\NETCore.MailKitExtensions.Tests\NETCore.MailKitExtensions.Tests.csproj", "{F1F8FAC6-8A66-4BD9-862B-71EF650B682E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7895A69E-98FA-44E5-AC33-497519CC619F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7895A69E-98FA-44E5-AC33-497519CC619F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7895A69E-98FA-44E5-AC33-497519CC619F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7895A69E-98FA-44E5-AC33-497519CC619F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F8FAC6-8A66-4BD9-862B-71EF650B682E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F8FAC6-8A66-4BD9-862B-71EF650B682E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F8FAC6-8A66-4BD9-862B-71EF650B682E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F8FAC6-8A66-4BD9-862B-71EF650B682E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
