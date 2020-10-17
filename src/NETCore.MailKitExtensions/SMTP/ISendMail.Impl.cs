@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using MimeKit;
 using MimeKit.Text;
 
-namespace NETCore.MailKitExtensions.Service.Impl
+namespace NETCore.MailKitExtensions.SMTP.Impl
 {
-    public class SendService : ISendService
+    public class SendMail : ISendMail
     {
+        private readonly ILogger _logger;
         private readonly IMailKitProvider _mailKitProvider;
 
-        public SendService(IMailKitProvider mailKitProvider)
+        public SendMail(ILogger<SendMail> logger,IMailKitProvider mailKitProvider)
         {
+            _logger = logger;
             _mailKitProvider = mailKitProvider;
         }
 
@@ -53,8 +56,15 @@ namespace NETCore.MailKitExtensions.Service.Impl
                 Text = message
             };
 
-            using var smtpClient = _mailKitProvider.SmtpClient;
-            smtpClient.Send(mimeMessage);
+            try
+            {
+                using var smtpClient = _mailKitProvider.SmtpClient;
+                smtpClient.Send(mimeMessage);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex);
+            }
         }
 
         public void SendEmailAsync(string subject, string message, bool isText)

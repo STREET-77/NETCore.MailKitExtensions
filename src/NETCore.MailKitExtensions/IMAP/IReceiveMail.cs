@@ -1,7 +1,8 @@
 ﻿using System;
-namespace NETCore.MailKitExtensions.Service
+
+namespace NETCore.MailKitExtensions.IMAP
 {
-    public interface IReceiveService
+    public interface IReceiveMail
     {
         void ReceiveUnreadEmail(Action<ReceiveEventMessage> action);
     }

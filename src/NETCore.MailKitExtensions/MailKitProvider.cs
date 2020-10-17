@@ -1,6 +1,7 @@
 ﻿using System;
 using MailKit.Net.Imap;
 using MailKit.Net.Smtp;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace NETCore.MailKitExtensions
@@ -9,6 +10,8 @@ namespace NETCore.MailKitExtensions
     {
         public MailKitProvider(IOptions<MailKitOptions> options)
         {
+            if (options == null)
+                throw new ArgumentNullException(nameof(options));
             Options = options.Value;
         }
 
@@ -16,7 +19,7 @@ namespace NETCore.MailKitExtensions
         {
             get
             {
-                return new Lazy<SmtpClient>(InitSmtpClient).Value;
+                return new Lazy<SmtpClient>(CreateSmtpClient).Value;
             }
         }
 
@@ -24,13 +27,13 @@ namespace NETCore.MailKitExtensions
         {
             get
             {
-                return new Lazy<ImapClient>(InitImapClient).Value;
+                return new Lazy<ImapClient>(CreateImapClient).Value;
             }
         }
 
         public MailKitOptions Options { get; }
 
-        private SmtpClient InitSmtpClient()
+        private SmtpClient CreateSmtpClient()
         {
             var smtpClient = new SmtpClient
             {
@@ -47,7 +50,7 @@ namespace NETCore.MailKitExtensions
             return smtpClient;
         }
 
-        private ImapClient InitImapClient()
+        private ImapClient CreateImapClient()
         {
             var imapClient = new ImapClient();
 

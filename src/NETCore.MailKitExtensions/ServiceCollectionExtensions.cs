@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NETCore.MailKitExtensions.Service;
 
 namespace NETCore.MailKitExtensions
 {
@@ -22,7 +21,8 @@ namespace NETCore.MailKitExtensions
             services.AddOptions();
             services.Configure(setupAction);
             services.Add(ServiceDescriptor.Scoped<IMailKitProvider, MailKitProvider>());
-            services.AddServices();
+            services.Add(ServiceDescriptor.Scoped<IMAP.IReceiveMail, IMAP.Impl.ReceiveMail>());
+            services.Add(ServiceDescriptor.Scoped<SMTP.ISendMail, SMTP.Impl.SendMail>());
 
             return services;
         }
@@ -31,7 +31,8 @@ namespace NETCore.MailKitExtensions
         {
             services.Configure<MailKitOptions>(configuration);
             services.Add(ServiceDescriptor.Scoped<IMailKitProvider, MailKitProvider>());
-            services.AddServices();
+            services.Add(ServiceDescriptor.Scoped<IMAP.IReceiveMail, IMAP.Impl.ReceiveMail>());
+            services.Add(ServiceDescriptor.Scoped<SMTP.ISendMail, SMTP.Impl.SendMail>());
 
             return services;
         }

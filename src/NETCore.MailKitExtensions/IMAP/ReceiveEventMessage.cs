@@ -1,5 +1,5 @@
 ﻿using System;
-namespace NETCore.MailKitExtensions.Service
+namespace NETCore.MailKitExtensions.IMAP
 {
     internal delegate void SetReadHandler();
 
